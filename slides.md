@@ -222,6 +222,36 @@ Une API GraphQL renverra le résultat suivant au format JSON :
 
 ---
 transition: slide-up
+layout: two-cols
+---
+
+# Requête de "mutation"
+
+```graphql
+mutation CreateReviewForEpisode(
+  $ep: Episode!,
+  $review: ReviewInput!
+) {
+  createReview(episode: $ep, review: $review) {
+    stars
+    commentary
+  }
+}
+```
+
+::right::
+
+```sh
+curl 'https://graphql-api-url' \
+  -X POST \
+  -H 'content-type: application/json' \
+  --data '{
+    "query":"mutation { createUser(name: \"John Doe\") }"
+  }'
+```
+
+---
+transition: slide-up
 ---
 
 # Communication avec GraphQL (CURL)
